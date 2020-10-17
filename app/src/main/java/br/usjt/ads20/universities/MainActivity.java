@@ -69,12 +69,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(ArrayList<University> university){
-            Intent intent = new Intent(context, ListUniversities.class);
-            String nome = txtName.getText().toString();
-            intent.putExtra(NAME, nome);
-            intent.putExtra(UNIVERSITY, university);
-            progressBar.setVisibility(View.INVISIBLE);
-            startActivity(intent);
+            if (txtName.getText().length() > 0) {
+                Intent intent = new Intent(context, ListUniversities.class);
+                String nome = txtName.getText().toString();
+                intent.putExtra(NAME, nome);
+                intent.putExtra(UNIVERSITY, university);
+                progressBar.setVisibility(View.INVISIBLE);
+                startActivity(intent);
+            }
+            else progressBar.setVisibility(View.INVISIBLE);
         }
     }
 }
