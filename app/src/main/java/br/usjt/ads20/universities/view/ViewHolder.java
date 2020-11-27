@@ -1,4 +1,4 @@
-package br.usjt.ads20.universities;
+package br.usjt.ads20.universities.view;
 
 import android.widget.ImageView;
 import android.widget.TextView;

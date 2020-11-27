@@ -1,4 +1,4 @@
-package br.usjt.ads20.universities;
+package br.usjt.ads20.universities.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,22 +13,25 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import br.usjt.ads20.universities.R;
 import br.usjt.ads20.universities.model.Data;
 import br.usjt.ads20.universities.model.University;
+import br.usjt.ads20.universities.presenter.ListUniversitiesPresenter;
 
-import static br.usjt.ads20.universities.model.Data.searchUniversities;
 
 /**
  * Nome: Pedro Gabriel Bezerra Tozzi
  * RA: 818229341
  */
 
-public class ListUniversities extends AppCompatActivity {
+public class ListUniversities extends AppCompatActivity implements ListUniversitiesView{
     public static final String UNIVERSITY = "br.usjt.ads20.universities.description";
 
-    University[] universityList;
+    public University[] universityList;
 
     private Activity activity;
+
+    ListUniversitiesPresenter presenter = new ListUniversitiesPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +43,13 @@ public class ListUniversities extends AppCompatActivity {
 
         String key = intent.getStringExtra(MainActivity.NAME);
 
-        ArrayList<University> characters = (ArrayList<University>) intent.getSerializableExtra(MainActivity.UNIVERSITY);
-        Data.setUniversities(characters);
+        ArrayList<University> universities = (ArrayList<University>) intent.getSerializableExtra(MainActivity.UNIVERSITY);
 
-        universityList = searchUniversities(key);
+
+        Data.setUniversities(universities);
+
+
+        universityList = presenter.searchUniversities(universities, key);
 
         BaseAdapter adapter = new UniversityAdapter(this, universityList);
 
@@ -62,5 +68,10 @@ public class ListUniversities extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public ArrayList<University> loadUniversities() {
+        return null;
     }
 }

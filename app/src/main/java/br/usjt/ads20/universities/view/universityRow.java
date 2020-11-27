@@ -1,8 +1,10 @@
-package br.usjt.ads20.universities;
+package br.usjt.ads20.universities.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import br.usjt.ads20.universities.R;
 
 /**
  * Nome: Pedro Gabriel Bezerra Tozzi

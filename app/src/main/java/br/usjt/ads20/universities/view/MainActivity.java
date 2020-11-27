@@ -1,11 +1,10 @@
-package br.usjt.ads20.universities;
+package br.usjt.ads20.universities.view;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -14,19 +13,20 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
-import br.usjt.ads20.universities.model.Data;
+import br.usjt.ads20.universities.R;
 import br.usjt.ads20.universities.model.University;
 import br.usjt.ads20.universities.model.UniversityNetwork;
+import br.usjt.ads20.universities.presenter.MainPresenter;
+import br.usjt.ads20.universities.view.ListUniversities;
 
 /**
  * Nome: Pedro Gabriel Bezerra Tozzi
  * RA: 818229341
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainActivityView {
     private EditText txtName;
     private ProgressBar progressBar;
     public  static final String NAME = "br.usjt.ads20.universities.name";
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private String url = "http://universities.hipolabs.com/search?name=";
     private Context context;
 
+    MainPresenter presenter = new MainPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         txtName = findViewById(R.id.search_university);
         progressBar = findViewById(R.id.progressBarMain);
         context = this;
+        presenter.onCreate();
     }
 
     public void searchUniversities(View view) {
@@ -79,5 +81,40 @@ public class MainActivity extends AppCompatActivity {
             }
             else progressBar.setVisibility(View.INVISIBLE);
         }
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        presenter.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        presenter.onRestart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        presenter.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        presenter.onPause();
     }
 }

@@ -1,9 +1,11 @@
-package br.usjt.ads20.universities;
+package br.usjt.ads20.universities.view;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+
+import br.usjt.ads20.universities.R;
 
 /**
  * Classe Util com método que cria o avatar da linha do ListView

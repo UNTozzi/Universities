@@ -1,4 +1,4 @@
-package br.usjt.ads20.universities;
+package br.usjt.ads20.universities.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import br.usjt.ads20.universities.R;
 import br.usjt.ads20.universities.model.University;
 
 /**
